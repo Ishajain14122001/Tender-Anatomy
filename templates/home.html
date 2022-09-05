@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Home</title>
+    <style>
+        .navbar
+    {
+        background-color: #00040b;
+    }
+    .navbar a
+    {
+        color: #fff;
+    }
+    .navbar .navbar-nav .nav-link {
+        color: #fff;
+        font-size: 1.1em;
+    }
+    .navbar .navbar-nav .nav-link:hover{
+        color: #808080;
+    }
+        .header{
+
+            width: 100%;
+            height: 80vh;
+            background-image:url('/static/img/a.jpg');
+            background-position: relative;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+                }
+
+        .header h1
+        {
+                    font-size:65px;
+                    top: 5%;
+                    font-weight: 700;
+                    color:#fff;
+                    margin-top:60px;
+
+        }
+        .header h2
+        {
+                    font-size:65px;
+                    top: 5%;
+                    font-weight: 700;
+                    color:#fff;
+                    margin-top:60px;
+                    margin-left: 200px;
+
+        }
+        .ab
+        {
+                    font-size:65px;
+                    top: 50%;
+                    font-weight: 700;
+                    color:#fff;
+                    margin-top:60px;
+                    margin-right: 530px;
+
+        }
+        .gap100
+        {
+            padding: 100px 0px ;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light ">
+        <div class="container">
+            <a class="navbar-brand " href="/home">
+              <img src="/static/img/logo1.jpg" alt="" width="50" height="40">
+            </a>
+          </div>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ps-5" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sentiment">Anatomy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/visual">Visual</a>
+                </li>
+            
+                
+            </ul>
+            <ul class="navbar-nav px-3 ">
+                <li class="nav-item text-nowrap">
+                  <a class="nav-link  card bg-dark" style="font-size: 20px; padding: 3px" href="/logout">Sign out</a>
+                </li>
+              </ul>
+        </div>
+      </nav>
+      {% if email %}
+  <p>{{ email }}</p>
+{% endif %}
+    <div class="header">
+        <div class="container">
+             <div class="row text center">
+                <div class="col-lg-12">
+                    <div>
+                        <h1 class="hea"> <b>Twitter Tender Anatomy</b> </h1>
+                        <br>
+                        <h2 class="he"> <b> Let's Rock!</b></h2>
+                        <br>
+                        <div class="carousel-caption ab" >
+                            <a href="/sentiment" class="btn btn-primary btn-block btn-lg" style="background-color: crimson; font-size: 30px"> Click here for Analysis</a>
+                        </div>
+
+        
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+    
+    <section>
+        <div class="container">
+            <div class="row gap100">
+                <div class="col-md-6">
+                    <h2 class="text-center"> <b>About Tender Anatomy</b></h2>
+                    <br>
+                    <p class="fw-semibold" >Tender Anatomy is a technique widely used in text mining. Twitter Sentiment Analysis, therefore means, using advanced text mining techniques to analyze the sentiment of the text (here, tweet) in the form of positive, negative and neutral. It is also known as Opinion Mining, is primarily for analyzing conversations, opinions, and sharing of views (all in the form of tweets) for deciding business strategy, political analysis, and also for assessing public actions.</p>
+                    <p class="text-sm-start fs-5 fw-bold">NOTE: To begin, click the above button to navigate to the website where you can analyse your Tweet.</p>
+                    
+                </div>    
+            <div class="col-md-6">
+                <img src="/static/img/d.jpeg" class="img-fluid" alt="laptop">
+            </div>
+        </div>
+        
+    </section>
+
+</body>
+</html>

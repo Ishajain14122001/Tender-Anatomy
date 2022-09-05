@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Sentiment</title>
+    <style>
+        .navbar
+    {
+        background-color: #00040b;
+    }
+    .navbar a
+    {
+        color: #fff;
+    }
+    .navbar .navbar-nav .nav-link {
+        color: #fff;
+        font-size: 1.1em;
+    }
+    .navbar .navbar-nav .nav-link:hover{
+        color: #808080;
+    }
+    </style>
+    
+</head>
+    <body>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light ">
+            <div class="container">
+                <a class="navbar-brand " href="#">
+                  <img src="/static/img/logo1.jpg" alt="" width="50" height="40">
+                </a>
+              </div>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ps-5" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sentiment">Anatomy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/visual">Visual</a>
+                    </li>
+                
+                    
+                </ul>
+                <ul class="navbar-nav px-3 ">
+                    <li class="nav-item text-nowrap">
+                      <a class="nav-link  card bg-dark" style="font-size: 20px; padding: 3px" href="/logout">Sign out</a>
+                    </li>
+                  </ul>
+            </div>
+          </nav>
+
+          <div class="container">
+            <div class="row">
+                <div class="card mt-100" style="margin-top: 50px">
+                  <h1 style="color: black">Enter the Keyword of Subject and Number of tweets for Anatomy</h1>
+                  <div class="card-body">
+                    <form method="post" action="sentiment_logic">
+                      <label> Enter your search keyword </label><br>
+                      <input type="text" class="form-control" name="keyword"> <br>
+                      <label> Enter your number of tweets to Anatomy </label><br>
+                      <input type="number" class="form-control" name="tweets"><br>
+                      <input type="submit" class="btn btn-primary btn-block btn-lg" value="Search">
+                    </form> <br>
+                    <p> Need help? <a href="/register"> Click here </a></p>
+                  </div>
+                </div>
+      
+      
+            </div>
+          </div>
+          <br>
+<br>
+<br>
+<div class="container" style="background-color: cyan;">
+  <ul>
+    <h1>Some Important Points that you have to remember =></h1>
+    <li><h1 style="color: black">Your Anatomy report will be sent to your email shortly.</h1></li>
+    <li><h1 style="color: black">Only after you connect with a valid email address will your Anatomy report be provided to you.</h1></li>
+    <li><h1 style="color: black">If you do not register with a valid email address, click the link at the bottom of the form to register with a valid email address.</h1></li>
+    <li><h1 style="color: black">Please do not close the page until you receive the report.</h1></li>
+  </ul>
+
+
+
+</div>
+<br>
+<div>
+  {% if polarity %}
+  <h3 style="color: white; text-align: center;font-size:30px; border-radius: 25px; background-color: black">How are people reacting on {{keyword}} by analyzing {{tweets}} Tweets</h3>
+  {% endif %}
+</div>
+<br>
+<div>
+  <div class="row">
+    <h1 style="color: black; text-align: center;font-size:50px">Anatomy Polarity:-</h1>
+    <div class="alert alert-primary" role="alert"           style="height:120px">
+      {% if polarity %}
+      <h1 style="text-align: center;font-size:30px"> The Average Sentiment Polarity is {{polarity}}  </h1>
+      {%endif%}
+    </div>
+  </div>
+
+</div>
+
+<br>
+<div>
+  <div class="row">
+    <h1 style="color: black; text-align: center;font-size:50px">Anatomy Subjectivity:-</h1>
+    <div class="alert alert-primary" role="alert"           style="height:120px">
+      {% if subjectivity %}
+         <h1 style="text-align: center;font-size:30px"> The Average Sentiment subjectivity is {{subjectivity}} </h1>
+          {%endif%}
+    </div>
+  </div>
+
+</div>
+<br>
+<br>
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-2">
+            <img class="card-img-top" src="/static/img/ee.webp"
+              alt="Card image cap">
+            <div class="card-body">
+              {% if polarity %}
+              <h1 class="report-text"> {{positive}} "% people thought it was Positive"</h1>
+              {%endif%}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 clearfix d-none d-md-block">
+          <div class="card mb-2">
+            <img class="card-img-top" src="/static/img/r.webp"
+              alt="Card image cap">
+            <div class="card-body">
+              {% if polarity %}
+              <h1 class="report-text"> {{neutral}} "% people thought it was Neutral"</h1>
+              {%endif%}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 clearfix d-none d-md-block">
+          <div class="card mb-2">
+            <img class="card-img-top" src="/static/img/ff.webp"
+              alt="Card image cap">
+            <div class="card-body">
+              {% if polarity %}
+              <h1 class="report-text"> {{negative}} "% people thought it was Negative"</h1>
+              {%endif%}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<a href="visual" class="btn btn-primary btn-block btn-lg" style="background-color:blue; font-size: 30px"> Generate Visualization</a>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+</body>
+</html>
+
+    </body>
+</html>
+
